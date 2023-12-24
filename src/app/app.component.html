@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <title>Centrado con Select y Radio</title>
+</head>
+<body>
+
+  <div class="container">
+    <img src="https://imgs.search.brave.com/7tCOFbJKmad5mfeboLAjXMOoN8ir0tYtuxZMEA0crVQ/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2I4LzA5/L2ZjL2I4MDlmY2I0/NTVjZGI5ZWIwYmM2/MWU4NzFiNWVjZDRl/LmpwZw">
+    <br>
+  
+    <h3>Selecciona una casa:</h3>
+    <div>@for (casa of casas; track $index) {
+      <label class="btn btn-{{colores[$index]}}">
+      {{ casa }}
+      <input type="radio" name="option" (click)="onSelectHouse(casa,colores[$index])">
+      </label>
+    }
+    <br>
+      <div>
+            @if (listaAlumno.length > 0) {
+              <br>
+                <h3>Alumnos agregados </h3>
+                <ul>
+                  @for (alumno of listaAlumno; track $index) {
+                    <li class="btn btn-{{alumno.color}}">{{alumno.nombre}} - {{alumno.casa}} </li>
+
+                    <br>
+                  }
+                </ul>
+            }@else {
+              <br>
+              <h3>Sin alumnos</h3>
+            }
+
+      </div>
+    </div>
+    @if(seleccion){
+      <br>
+      <p> Has seleccionado la casa {{seleccion.casa}} </p>
+    }
+
+    @if (seleccion) {
+      <app-componente-hijo
+
+          [casa]="seleccion.casa"
+          [color]="seleccion.color"
+          [titulo]="'Alumno'"
+
+          (elementoAdd)="agregarAlumno($event)">
+  
+      </app-componente-hijo>
+    }
+  </div>
+</body>
+</html>

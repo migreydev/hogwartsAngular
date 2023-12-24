@@ -1,0 +1,17 @@
+<div>
+    <div>
+        <div class="bg-{{color}}" style="width: 300px;">
+        <h3>  
+            {{casa || 'Selecciona una casa'}} 
+            @if (titulo) {
+                <span> Añadir {{titulo}}</span>
+            }
+        </h3>
+
+        <form>
+            <input type="text" class="form-control" #nombreAlumno>
+            <button type="button" class="btn btn-{{color}}" (click)="addAlumno(nombreAlumno.value)">Añadir {{titulo}}</button>
+        </form>
+        </div>
+    </div>
+</div>
